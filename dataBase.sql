@@ -66,7 +66,7 @@ CREATE TABLE posts (
     view_count INT DEFAULT 0,
     CONSTRAINT fk_posts_user FOREIGN KEY (user_id) REFERENCES users(id),
     CONSTRAINT fk_posts_category FOREIGN KEY (category_id) REFERENCES categories(id),
-    CHECK (status IN ('draft', 'published'))
+    CHECK (status IN ('draft', 'published','archive'))
 );
 
 
@@ -118,31 +118,31 @@ CREATE TABLE comments (
 );
 
 INSERT INTO comments VALUES 
-('1','Jean Martin','jean.martin@email.com','Excellent article, très bien documenté!','2024-02-21 12:30:00','1','approved'),
-('2','Sophie Leroy','sophie.leroy@gmail.com','Je ne suis pas tout à fait daccord sur certains points.','2024-02-22 15:45:00','1','approved'),
-('3','Thomas Dubois','thomas.dubois@protonmail.com','Cela ma beaucoup aidé, merci pour ces conseils.','2024-02-25 16:00:00','2','approved'),
-('4','Marie Petit','marie.petit@yahoo.fr','Très bel article, les photos sont magnifiques !','2024-02-26 10:15:00','3','pending'),
-('5','Pierre Bernard','pierre.bernard@gmail.com','Je trouve que certains conseils sont dangereux.','2024-02-27 14:20:00','4','spam'),
-('6','Julie Vincent','julie.vincent@email.com','Parfait pour les débutants comme moi, merci !','2024-02-28 11:30:00','5','approved'),
-('7','Marc Roux','marc.roux@protonmail.com','Très détaillé, jai appris beaucoup de choses.','2024-02-29 09:45:00','6','approved'),
-('8','Isabelle Morel','isabelle.morel@yahoo.fr','Cest exactement ce que je cherchais, merci !','2024-03-01 13:00:00','7','approved'),
-('9','David Colin','david.colin@gmail.com','Je ne comprends pas la partie sur les investissements.','2024-03-02 16:15:00','8','pending'),
-('10','Caroline Lambert','caroline.lambert@email.com','Super article, jai hâte de lire la suite !','2024-03-03 10:30:00','9','approved'),
-('11','Nicolas Garnier','nicolas.garnier@protonmail.com','Les tendances présentées sont déjà dépassées.','2024-03-04 14:45:00','10','spam'),
-('12','Élodie Chevalier','elodie.chevalier@yahoo.fr','Je vais essayer la recette ce week-end !','2024-03-05 09:00:00','11','approved'),
-('13','Antoine Royer','antoine.royer@gmail.com','Bonnes astuces pour économiser, merci.','2024-03-06 12:15:00','12','approved'),
-('14','Clara Ménard','clara.menard@email.com','Le style minimaliste nest pas pour tout le monde','2024-03-07 15:30:00','13','pending'),
-('15','Quentin Gauthier','quentin.gauthier@protonmail.com','Très bon tutoriel sur lIA pour débutants.','2024-03-08 11:45:00','14','approved'),
-('16','Amélie Lebrun','amelie.lebrun@yahoo.fr','La méditation a changé ma vie, merci pour larticle.','2024-03-09 09:00:00','15','approved'),
-('17','Vincent Martin','vincent.martin@gmail.com','Voyager avec un petit budget cest possible !','2024-03-10 13:15:00','16','approved'),
-('18','Marine Dubois','marine.dubois@email.com','Les plats marocains sont délicieux, merci.','2024-03-11 16:30:00','17','pending'),
-('19','Alexandre Leroy','alexandre.leroy@protonmail.com','Je me prépare pour le ski, merci pour les conseils.','2024-03-12 10:45:00','18','approved'),
-('20','Sarah Petit','sarah.petit@yahoo.fr','Quelles applications recommandez-vous pour les enfants ?','2024-03-13 14:00:00','19','approved'),
-('21','Paul Bernard','paul.bernard@gmail.com','La bourse me fait peur, merci pour les explications.','2024-03-14 09:15:00','20','approved'),
-('22','Laura Vincent','laura.vincent@email.com','Je cherche justement un style casual chic, merci !','2024-03-15 12:30:00','21','pending'),
-('23','Mathieu Roux','mathieu.roux@protonmail.com','Important de parler de sécurité informatique.','2024-03-16 15:45:00','22','approved'),
-('24','Emma Morel','emma.morel@yahoo.fr','Je dors mal, merci pour ces conseils.','2024-03-17 11:00:00','23','approved'),
-('25','Hugo Colin','hugo.colin@gmail.com','Jai visité certains villages, ils sont magnifiques !','2024-03-18 09:15:00','24','approved')
+(1,'Jean Martin','jean.martin@email.com','Excellent article, très bien documenté!','2024-02-21 12:30:00','1','approved'),
+(2,'Sophie Leroy','sophie.leroy@gmail.com','Je ne suis pas tout à fait daccord sur certains points.','2024-02-22 15:45:00','1','approved'),
+(3,'Thomas Dubois','thomas.dubois@protonmail.com','Cela ma beaucoup aidé, merci pour ces conseils.','2024-02-25 16:00:00','2','approved'),
+(4,'Marie Petit','marie.petit@yahoo.fr','Très bel article, les photos sont magnifiques !','2024-02-26 10:15:00','3','pending'),
+(5,'Pierre Bernard','pierre.bernard@gmail.com','Je trouve que certains conseils sont dangereux.','2024-02-27 14:20:00','4','spam'),
+(6,'Julie Vincent','julie.vincent@email.com','Parfait pour les débutants comme moi, merci !','2024-02-28 11:30:00','5','approved'),
+(7,'Marc Roux','marc.roux@protonmail.com','Très détaillé, jai appris beaucoup de choses.','2024-02-29 09:45:00','6','approved'),
+(8,'Isabelle Morel','isabelle.morel@yahoo.fr','Cest exactement ce que je cherchais, merci !','2024-03-01 13:00:00','7','approved'),
+(9,'David Colin','david.colin@gmail.com','Je ne comprends pas la partie sur les investissements.','2024-03-02 16:15:00','8','pending'),
+(10,'Caroline Lambert','caroline.lambert@email.com','Super article, jai hâte de lire la suite !','2024-03-03 10:30:00','9','approved'),
+(11,'Nicolas Garnier','nicolas.garnier@protonmail.com','Les tendances présentées sont déjà dépassées.','2024-03-04 14:45:00','10','spam'),
+(12,'Élodie Chevalier','elodie.chevalier@yahoo.fr','Je vais essayer la recette ce week-end !','2024-03-05 09:00:00','11','approved'),
+(13,'Antoine Royer','antoine.royer@gmail.com','Bonnes astuces pour économiser, merci.','2024-03-06 12:15:00','12','approved'),
+(14,'Clara Ménard','clara.menard@email.com','Le style minimaliste nest pas pour tout le monde','2024-03-07 15:30:00','13','pending'),
+(15,'Quentin Gauthier','quentin.gauthier@protonmail.com','Très bon tutoriel sur lIA pour débutants.','2024-03-08 11:45:00','14','approved'),
+(16,'Amélie Lebrun','amelie.lebrun@yahoo.fr','La méditation a changé ma vie, merci pour larticle.','2024-03-09 09:00:00','15','approved'),
+(17,'Vincent Martin','vincent.martin@gmail.com','Voyager avec un petit budget cest possible !','2024-03-10 13:15:00','16','approved'),
+(18,'Marine Dubois','marine.dubois@email.com','Les plats marocains sont délicieux, merci.','2024-03-11 16:30:00','17','pending'),
+(19,'Alexandre Leroy','alexandre.leroy@protonmail.com','Je me prépare pour le ski, merci pour les conseils.','2024-03-12 10:45:00','18','approved'),
+(20,'Sarah Petit','sarah.petit@yahoo.fr','Quelles applications recommandez-vous pour les enfants ?','2024-03-13 14:00:00','19','approved'),
+(21,'Paul Bernard','paul.bernard@gmail.com','La bourse me fait peur, merci pour les explications.','2024-03-14 09:15:00','20','approved'),
+(22,'Laura Vincent','laura.vincent@email.com','Je cherche justement un style casual chic, merci !','2024-03-15 12:30:00','21','pending'),
+(23,'Mathieu Roux','mathieu.roux@protonmail.com','Important de parler de sécurité informatique.','2024-03-16 15:45:00','22','approved'),
+(24,'Emma Morel','emma.morel@yahoo.fr','Je dors mal, merci pour ces conseils.','2024-03-17 11:00:00','23','approved'),
+(25,'Hugo Colin','hugo.colin@gmail.com','Jai visité certains villages, ils sont magnifiques !','2024-03-18 09:15:00','24','approved')
 
 SELECT * FROM comments;
 
@@ -160,5 +160,5 @@ SELECT title , created_at , status from posts;
 
 -- 3. UPDATE - Modification de statut
 
-update posts SET status = 'archive' WHERE created_at < '2024-01-01';
+update posts SET status = 'archive' WHERE created_at < '2024-04-01';
 SELECT * FROM posts;
