@@ -1,6 +1,8 @@
+-- creat DATABASE
 CREATE DATABASE blog;
 USE blog ;
 
+-- 
 CREATE table users(
     id int PRIMARY key auto_increment,
     username VARCHAR(50),
@@ -162,3 +164,5 @@ SELECT title , created_at , status from posts;
 
 update posts SET status = 'archive' WHERE created_at < '2024-04-01';
 SELECT * FROM posts;
+
+DELETE 
